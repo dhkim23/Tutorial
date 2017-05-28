@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>Select Box - CSS</title>
+		<style>
+			div#select_box {
+				position: relative;
+				width: 200px;
+				height: 500px;
+				background: url(select_arrow.png) 180px center no-repeat;
+				border: 0px solid #E9DDDD;
+			}
+			div#select_box label {
+				
+				font-size: 14px;
+				color: #0000ff;
+				top: 13px;
+				left: 12px;
+				letter-spacing: 1px;
+			}
+			div#select_box select#color {
+				width: 100%;
+				height: 100%;
+				color: #a97228;
+				border: 1px solid #E9DDDD;
+				overflow-y: auto;
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="select_box">
+		<label for="color">김민성 선택하세요♥</label>
+		<select id="color" title="민성이 뭐가 궁금해? ^^" multiple="multiple">
+		<!--
+		<option value="http://m.site.naver.com/0kwo3"  selected="selected">01 - 진달래</option>
+		<option value="http://m.site.naver.com/0kwo0">02 - 산수유</option>
+		<option value="http://m.site.naver.com/0kwoS">03 - 팽나무</option>
+		<option value="http://m.site.naver.com/0kwnV">04 - 꽃사과</option>
+		<option value="http://m.site.naver.com/0kwnS">05 - 산당화<br>
+		<option value="http://m.site.naver.com/0kwp2">06 - 매화나무</option>
+		<option value="http://m.site.naver.com/0kwnR">07 - 조팝나무</option>
+		<option value="http://m.site.naver.com/0kwp4">08 - 타래붓꽃</option>
+		<option value="http://m.site.naver.com/0kwpg">09 - 비비추</option>
+		<option value="http://m.site.naver.com/0kvU1">10 - 박태기나무</option>
+		<option value="http://m.site.naver.com/0kvTV">11 - 태산목</option>
+		<option value="http://m.site.naver.com/0kvTN">12 - 주목</option>
+		<option value="http://m.site.naver.com/0kvTK">13 - 공작단풍</option>
+		<option value="http://m.site.naver.com/0kvTG">14 - 부처꽃</option>
+		<option value="http://m.site.naver.com/0kvTE">15 - 수수꽃다리</option>
+		<option value="http://m.site.naver.com/0kwnP">16 - 소엽맥문동</option>
+		<option value="http://m.site.naver.com/0kvUa">17 - 백목련</option>
+		<option value="http://m.site.naver.com/0kwnY">18 - 소나무</option>
+-->
+		</select>
+		
+		</div>
+		<div>aaaaa</div>
+
+		<img id = "my_image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Rhododendron_mucronulatum4.jpg/250px-Rhododendron_mucronulatum4.jpg" style="FLOAT: none; CLEAR: none" actualwidth="200" exif="{}" border="0" hspace="1" vspace="1" width="200" id="A_133BE5495052EDAA075AE9">
+		
+
+		
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+	jQuery(document).ready(function(){
+		
+		var select = $("select#color");
+		
+		
+		
+		
+		var treeName = ["진달래", "산수유","팽나무",
+						"꽃사과","산당화","매화나무",
+						"조팝나무","타래붓꽃","비비추",
+						"박태기나무", "태산목","주목",
+						"공작단풍","부처꽃","수수꽃다리",
+						"소엽맥문동","백목련","소나무"
+		];
+		var treeUrl = ["http://m.site.naver.com/0kwo3", 
+						"http://m.site.naver.com/0kwo0",
+						"http://m.site.naver.com/0kwoS",
+						"http://m.site.naver.com/0kwnV",
+						"http://m.site.naver.com/0kwnS",
+						"http://m.site.naver.com/0kwp2",
+						"http://m.site.naver.com/0kwnR",
+						"http://m.site.naver.com/0kwp4",
+						"http://m.site.naver.com/0kwpg",
+						"http://m.site.naver.com/0kvU1",
+						"http://m.site.naver.com/0kvTV",
+						"http://m.site.naver.com/0kvTN",
+						"http://m.site.naver.com/0kvTK",
+						"http://m.site.naver.com/0kvTG",
+						"http://m.site.naver.com/0kvTE",
+						"http://m.site.naver.com/0kwnP",
+						"http://m.site.naver.com/0kvUa",
+						"http://m.site.naver.com/0kwnY"
+		];
+		var treeImgUrl = [
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Rhododendron_mucronulatum4.jpg/250px-Rhododendron_mucronulatum4.jpg",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Cornus_officinalis2.JPG/500px-Cornus_officinalis2.JPG",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Celtis_sinensis.JPG/250px-Celtis_sinensis.JPG",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Malus_prunifolia.JPG/600px-Malus_prunifolia.JPG",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Chaenomeles_lagenaria_in_Incheon_Korea_2.JPG/250px-Chaenomeles_lagenaria_in_Incheon_Korea_2.JPG",
+						"http://chulsa.kr/files/attach/images/66/330/990/005/29fdb92a021bb59594837c0d3393443e.JPG",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Spiraea_prunifolia_for._simpliciflora.JPG/250px-Spiraea_prunifolia_for._simpliciflora.JPG",
+						"http://dbscthumb.phinf.naver.net/3041_000_6/20140529150212442_W427SGWSB.jpg/WF211_t.jpg?type=w450_fst_n",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Hosta_longipes.jpg/250px-Hosta_longipes.jpg",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/1/18/CercisChinensisShrub2.jpg/250px-CercisChinensisShrub2.jpg",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Magnolia_grandiflora_flower.JPG/250px-Magnolia_grandiflora_flower.JPG",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Taxus_cuspidata_SZ128.png/300px-Taxus_cuspidata_SZ128.png",
+						"http://dthumb.phinf.naver.net/?src=%22http%3A%2F%2Fdbscthumb.phinf.naver.net%2F3041_000_2%2F20140523181049253_4VJMTR4IF.jpg%2FNSMK-PL-0004313-.jpg%3Ftype%3Dw690_fst_n%26wm%3DY%22&twidth=643&theight=530&opts=17",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/LythrumSalicaria-flowers-1mb.jpg/250px-LythrumSalicaria-flowers-1mb.jpg",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/%EC%88%98%EC%88%98%EA%BD%83%EB%8B%A4%EB%A6%AC_%282%29.JPG/250px-%EC%88%98%EC%88%98%EA%BD%83%EB%8B%A4%EB%A6%AC_%282%29.JPG",
+						"http://dbscthumb.phinf.naver.net/2765_000_1/20131013170052687_CPBJVK7BK.jpg/69957.jpg?type=m250&wm=N",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Yulan_1.JPG/250px-Yulan_1.JPG",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Pinus_densiflora_Kumgangsan.jpg/250px-Pinus_densiflora_Kumgangsan.jpg"
+		];
+		//--10
+		var tip = [
+						"민성아 [백목련] 과, [태산목]의 꽃색깔은?",
+						"민성아 [박태기나무]는 콩과 콩목 식물이야~",
+						"[타래붓꽃],[비비추]는 보라색꽃으로 비슷한 모양.  민성이 확인바람",
+						"우리 민성이 좀 쉬다해~",
+						"조팝나무 꽃은 꼭 팝콘모양같이 생겼네",
+						"[OO추]는 보라색 나팔꽃 모양이다. 뭘까요?",
+						"[매화나무]는 OO과 식물이다. 민성아 아빠한테 알려줘 ㅋㅋ",
+		];
+		
+		//alert(makeRandom(0,10));
+		for (var i=0; i< treeName.length; i++){
+				var index = i<9?"0"+(i+1) : (i+1);
+				
+				top.frames['right'].location.href =  treeUrl[i];
+				if(i==0)
+					select.append("<option value='"+ treeUrl[i] + "' selected='selected'>"+ index +" "+ treeName[i] + "</option>");
+				else
+					select.append("<option value='"+ treeUrl[i] + "'>"+ index +" "+ treeName[i] + "</option>");
+				
+				
+		}
+
+	    select.change(function(){
+	        var select_name = $(this).children("option:selected").text();
+	        $(this).siblings("label").text(select_name);
+			 var url = $(this).val(); // get selected value
+          if (url) { // require a URL
+		      top.frames['right'].location.href = url;
+              //window.location = url; // redirect
+          }
+		  var index = select.prop('selectedIndex') 
+		  
+		  select.attr('title',tip[makeRandom(0,3)]);
+		  $('#my_image').attr('src',treeImgUrl[index]); 
+          return false;
+
+    	});
+    
+	});
+	function makeRandom(min, max){
+    var RandVal = Math.random() * (max- min) + min;
+    return Math.floor(RandVal);
+	};
+	</script>
+			
+	</body>
+</html>

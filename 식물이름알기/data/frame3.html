@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>Select Box - CSS</title>
+		<style>
+			div#select_box {
+				position: relative;
+				width: 700px;
+				height: 400px;
+				background: url(select_arrow.png) 180px center no-repeat;
+				border: 1px solid #E9DDDD;
+			}
+			div#select_box label {
+				
+				font-size: 14px;
+				color: #0000ff;
+				top: 13px;
+				left: 12px;
+				letter-spacing: 1px;
+			}
+			div#select_box select#color {
+				width: 100%;
+				height: 100%;
+				color: #a97228;
+				border: 1px solid #E9DDDD;
+				overflow-y: auto;
+
+			}
+			#font1 {color: #ff0000; margin: 10px;} 
+
+
+		</style>
+	</head>
+	<body align = "center">
+		<label id="name">vvvvv</label><br>
+		<img id = "my_image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Rhododendron_mucronulatum4.jpg/250px-Rhododendron_mucronulatum4.jpg" style="vertical-align:middle; FLOAT: none; CLEAR: none" actualwidth="400" exif="{}" border="0" hspace="1" vspace="1" width="400" id="A_133BE5495052EDAA075AE9"> <BR>
+			<div>
+			 <font color=blue> 위 그림의 식물의 이름은 무엇인가요? </font><label id="position">김민성 선택하세요♥</label>
+			 <br> <input type="text" name="answer" id="answer" value=""/>
+		          <input type="button" value=" 다음" id="btn"	/>
+			</div><br>
+			<label id="state" style="color:#ff0000;">♥ 김민성 화이팅 ~ ♥ </label>
+			<label id="point" style="color:blue;"> </label>
+		</div>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+	jQuery(document).ready(function(){
+		
+		var maxCount =10;
+		var curIdx = 0;
+		var rightCnt = 0;
+		var select = $("select#color");
+		var answer = $("input#answer");
+		var next = $("input#btn");
+		var lbPosition = $("label#position");
+		var lbState = $("label#state");
+		var lbName = $("label#name");
+		var lbPoint = $("label#point");
+
+		//$(next).click(function () { alert(‘버튼이 클릭되었습니다.’) });
+		//$("#next").click(function () { alert(‘버튼이 클릭되었습니다.’) });
+
+
+		var treeName = ["진달래", "산수유","팽나무",
+						"꽃사과","산당화","매화나무",
+						"조팝나무","타래붓꽃","비비추",
+						"박태기나무", "태산목","주목",
+						"공작단풍","부처꽃","수수꽃다리",
+						"소엽맥문동","백목련","소나무"
+		];
+		var treeUrl = ["http://m.site.naver.com/0kwo3", 
+						"http://m.site.naver.com/0kwo0",
+						"http://m.site.naver.com/0kwoS",
+						"http://m.site.naver.com/0kwnV",
+						"http://m.site.naver.com/0kwnS",
+						"http://m.site.naver.com/0kwp2",
+						"http://m.site.naver.com/0kwnR",
+						"http://m.site.naver.com/0kwp4",
+						"http://m.site.naver.com/0kwpg",
+						"http://m.site.naver.com/0kvU1",
+						"http://m.site.naver.com/0kvTV",
+						"http://m.site.naver.com/0kvTN",
+						"http://m.site.naver.com/0kvTK",
+						"http://m.site.naver.com/0kvTG",
+						"http://m.site.naver.com/0kvTE",
+						"http://m.site.naver.com/0kwnP",
+						"http://m.site.naver.com/0kvUa",
+						"http://m.site.naver.com/0kwnY"
+		];
+		var treeImgUrl = [
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Rhododendron_mucronulatum4.jpg/250px-Rhododendron_mucronulatum4.jpg",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Cornus_officinalis2.JPG/500px-Cornus_officinalis2.JPG",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Celtis_sinensis.JPG/250px-Celtis_sinensis.JPG",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Malus_prunifolia.JPG/600px-Malus_prunifolia.JPG",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Chaenomeles_lagenaria_in_Incheon_Korea_2.JPG/250px-Chaenomeles_lagenaria_in_Incheon_Korea_2.JPG",
+						"http://chulsa.kr/files/attach/images/66/330/990/005/29fdb92a021bb59594837c0d3393443e.JPG",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Spiraea_prunifolia_for._simpliciflora.JPG/250px-Spiraea_prunifolia_for._simpliciflora.JPG",
+						"http://dbscthumb.phinf.naver.net/3041_000_6/20140529150212442_W427SGWSB.jpg/WF211_t.jpg?type=w450_fst_n",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Hosta_longipes.jpg/250px-Hosta_longipes.jpg",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/1/18/CercisChinensisShrub2.jpg/250px-CercisChinensisShrub2.jpg",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Magnolia_grandiflora_flower.JPG/250px-Magnolia_grandiflora_flower.JPG",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Taxus_cuspidata_SZ128.png/300px-Taxus_cuspidata_SZ128.png",
+						"http://dthumb.phinf.naver.net/?src=%22http%3A%2F%2Fdbscthumb.phinf.naver.net%2F3041_000_2%2F20140523181049253_4VJMTR4IF.jpg%2FNSMK-PL-0004313-.jpg%3Ftype%3Dw690_fst_n%26wm%3DY%22&twidth=643&theight=530&opts=17",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/LythrumSalicaria-flowers-1mb.jpg/250px-LythrumSalicaria-flowers-1mb.jpg",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/%EC%88%98%EC%88%98%EA%BD%83%EB%8B%A4%EB%A6%AC_%282%29.JPG/250px-%EC%88%98%EC%88%98%EA%BD%83%EB%8B%A4%EB%A6%AC_%282%29.JPG",
+						"http://dbscthumb.phinf.naver.net/2765_000_1/20131013170052687_CPBJVK7BK.jpg/69957.jpg?type=m250&wm=N",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Yulan_1.JPG/250px-Yulan_1.JPG",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Pinus_densiflora_Kumgangsan.jpg/250px-Pinus_densiflora_Kumgangsan.jpg"
+		];
+		//--10
+		answer.focus();		
+		var tip = [
+						"aaa","bbb"
+		];
+
+		var mixIdx =[];
+
+		mixIdx = random(treeName.length);
+
+		$('#my_image').attr('src',treeImgUrl[mixIdx[curIdx]]); 
+		lbName.text("" + treeName[mixIdx[curIdx]]);
+		lbPosition.text( "(" + (curIdx+1) + " / " + maxCount +")");
+		
+		next.click(function () { 
+			
+			if(maxCount == curIdx) {
+				alert("점수는 : " + parseInt((rightCnt / curIdx) * 100));
+				return false;
+			}
+			if(treeName[mixIdx[curIdx]] == answer.val()){
+					
+				lbState.text(" ^_^ 정답입니다. [" + treeName[mixIdx[curIdx]]+ "]");
+				//alert(" ^_^ 정답입니다. - " + treeName[mixIdx[curIdx]]);
+				rightCnt ++;
+			}else
+			{
+				lbState.text("ㅠ_ㅠ 틀렸엉 아까 그건 [" + treeName[mixIdx[curIdx]] + "] 이야" );
+				//alert("ㅠ_ㅠ 틀렸엉 - " + treeName[mixIdx[curIdx]]);
+			}
+			
+
+			//다음문제 
+			curIdx++;
+			lbPoint.text(" (지금까지 " + curIdx + " 문제 중 " + rightCnt + "개 정답~ )");
+			if(maxCount > curIdx) {
+				$('#my_image').attr('src',treeImgUrl[mixIdx[curIdx]]); 
+				lbPosition.text( "(" + (curIdx+1) + " / " + maxCount +")");
+				lbName.text("" + treeName[mixIdx[curIdx]]);
+				answer.val("");
+			}else{
+				lbState.text("김민성 점수는 : " + parseInt((rightCnt / curIdx) * 100) + "점 ");
+				
+			}
+			answer.focus();		 
+		});  
+	});
+	function getState(){
+       	var pointRate = parseInt((rightCnt / (curIdx + 1)) * 100);
+    	var runRate = parseInt(((curIdx + 1) / maxCount) * 100);
+
+	};
+	function makeRandom(min, max){
+    var RandVal = Math.random() * (max- min) + min;
+    return Math.floor(RandVal);
+	};
+	function random(n){
+        var ar = new Array();
+        var temp;
+        var rnum;
+       
+        //전달받은 매개변수 n만큼 배열 생성 ( 1~n )
+        for(var i=0; i<=n-1; i++){
+            ar.push(i);
+        }
+ 
+        //값을 서로 섞기
+        for(var i=0; i< ar.length ; i++)
+        {
+            rnum = Math.floor(Math.random() *n); //난수발생
+            temp = ar[i];
+            ar[i] = ar[rnum];
+            ar[rnum] = temp;
+        }
+ 
+        return ar;
+	};
+
+
+
+
+	</script>
+			
+	</body>
+</html>
